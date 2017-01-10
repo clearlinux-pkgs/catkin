@@ -4,14 +4,13 @@
 #
 Name     : catkin
 Version  : 0.7.4
-Release  : 3
+Release  : 4
 URL      : https://github.com/ros/catkin/archive/0.7.4.tar.gz
 Source0  : https://github.com/ros/catkin/archive/0.7.4.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: catkin-bin
-Requires: catkin-config
 Requires: catkin-python
 Requires: catkin-data
 BuildRequires : catkin_pkg
@@ -20,6 +19,7 @@ BuildRequires : empy
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : python-dev
+BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
@@ -29,18 +29,9 @@ BuildRequires : setuptools
 Summary: bin components for the catkin package.
 Group: Binaries
 Requires: catkin-data
-Requires: catkin-config
 
 %description bin
 bin components for the catkin package.
-
-
-%package config
-Summary: config components for the catkin package.
-Group: Default
-
-%description config
-config components for the catkin package.
 
 
 %package data
@@ -77,7 +68,7 @@ python components for the catkin package.
 export LANG=C
 mkdir clr-build
 pushd clr-build
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DCMAKE_RANLIB=/usr/bin/gcc-ranlib
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DCATKIN_BUILD_BINARY_PACKAGE=TRUE
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
@@ -89,15 +80,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-/usr/.catkin
-/usr/.rosinstall
-/usr/_setup_util.py
-/usr/_setup_util.pyc
-/usr/_setup_util.pyo
-/usr/env.sh
-/usr/setup.bash
-/usr/setup.sh
-/usr/setup.zsh
 
 %files bin
 %defattr(-,root,root,-)
@@ -109,11 +91,6 @@ popd
 /usr/bin/catkin_prepare_release
 /usr/bin/catkin_test_results
 /usr/bin/catkin_topological_order
-
-%files config
-%defattr(-,root,root,-)
-%config /usr/etc/catkin/profile.d/05.catkin_make.bash
-%config /usr/etc/catkin/profile.d/05.catkin_make_isolated.bash
 
 %files data
 %defattr(-,root,root,-)
@@ -211,7 +188,7 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/pkgconfig/catkin.pc
 
 %files python
 %defattr(-,root,root,-)
