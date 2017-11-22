@@ -4,15 +4,16 @@
 #
 Name     : catkin
 Version  : 0.7.7
-Release  : 7
+Release  : 8
 URL      : https://github.com/ros/catkin/archive/0.7.7.tar.gz
 Source0  : https://github.com/ros/catkin/archive/0.7.7.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: catkin-bin
-Requires: catkin-python
+Requires: catkin-legacypython
 Requires: catkin-data
+Requires: catkin-python
 BuildRequires : catkin_pkg
 BuildRequires : cmake
 BuildRequires : empy
@@ -53,9 +54,19 @@ Provides: catkin-devel
 dev components for the catkin package.
 
 
+%package legacypython
+Summary: legacypython components for the catkin package.
+Group: Default
+Requires: python-core
+
+%description legacypython
+legacypython components for the catkin package.
+
+
 %package python
 Summary: python components for the catkin package.
 Group: Default
+Requires: catkin-legacypython
 
 %description python
 python components for the catkin package.
@@ -69,7 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1501174781
+export SOURCE_DATE_EPOCH=1511381237
 mkdir clr-build
 pushd clr-build
 cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DCATKIN_BUILD_BINARY_PACKAGE=TRUE
@@ -77,7 +88,7 @@ make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1501174781
+export SOURCE_DATE_EPOCH=1511381237
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -126,17 +137,14 @@ popd
 /usr/share/catkin/cmake/find_program_required.cmake
 /usr/share/catkin/cmake/interrogate_setup_dot_py.py
 /usr/share/catkin/cmake/interrogate_setup_dot_py.pyc
-/usr/share/catkin/cmake/interrogate_setup_dot_py.pyo
 /usr/share/catkin/cmake/legacy.cmake
 /usr/share/catkin/cmake/list_append_deduplicate.cmake
 /usr/share/catkin/cmake/list_append_unique.cmake
 /usr/share/catkin/cmake/list_insert_in_workspace_order.cmake
 /usr/share/catkin/cmake/order_paths.py
 /usr/share/catkin/cmake/order_paths.pyc
-/usr/share/catkin/cmake/order_paths.pyo
 /usr/share/catkin/cmake/parse_package_xml.py
 /usr/share/catkin/cmake/parse_package_xml.pyc
-/usr/share/catkin/cmake/parse_package_xml.pyo
 /usr/share/catkin/cmake/platform/lsb.cmake
 /usr/share/catkin/cmake/platform/ubuntu.cmake
 /usr/share/catkin/cmake/platform/windows.cmake
@@ -173,15 +181,12 @@ popd
 /usr/share/catkin/cmake/test/catkin_download_test_data.cmake
 /usr/share/catkin/cmake/test/download_checkmd5.py
 /usr/share/catkin/cmake/test/download_checkmd5.pyc
-/usr/share/catkin/cmake/test/download_checkmd5.pyo
 /usr/share/catkin/cmake/test/gtest.cmake
 /usr/share/catkin/cmake/test/nosetests.cmake
 /usr/share/catkin/cmake/test/remove_test_results.py
 /usr/share/catkin/cmake/test/remove_test_results.pyc
-/usr/share/catkin/cmake/test/remove_test_results.pyo
 /usr/share/catkin/cmake/test/run_tests.py
 /usr/share/catkin/cmake/test/run_tests.pyc
-/usr/share/catkin/cmake/test/run_tests.pyo
 /usr/share/catkin/cmake/test/tests.cmake
 /usr/share/catkin/cmake/tools/bz2.cmake
 /usr/share/catkin/cmake/tools/doxygen.cmake
@@ -195,6 +200,9 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/pkgconfig/catkin.pc
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
