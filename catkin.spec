@@ -4,7 +4,7 @@
 #
 Name     : catkin
 Version  : 0.7.11
-Release  : 15
+Release  : 16
 URL      : https://github.com/ros/catkin/archive/0.7.11.tar.gz
 Source0  : https://github.com/ros/catkin/archive/0.7.11.tar.gz
 Summary  : No detailed summary available
@@ -13,13 +13,13 @@ License  : BSD-3-Clause
 Requires: catkin-bin
 Requires: catkin-python3
 Requires: catkin-data
+Requires: catkin-license
 Requires: catkin-python
 BuildRequires : catkin_pkg
 BuildRequires : cmake
 BuildRequires : empy
 BuildRequires : pbr
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -30,6 +30,7 @@ BuildRequires : setuptools
 Summary: bin components for the catkin package.
 Group: Binaries
 Requires: catkin-data
+Requires: catkin-license
 
 %description bin
 bin components for the catkin package.
@@ -52,6 +53,14 @@ Provides: catkin-devel
 
 %description dev
 dev components for the catkin package.
+
+
+%package license
+Summary: license components for the catkin package.
+Group: Default
+
+%description license
+license components for the catkin package.
 
 
 %package python
@@ -80,16 +89,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517769455
+export SOURCE_DATE_EPOCH=1529094656
 mkdir clr-build
 pushd clr-build
 cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DCATKIN_BUILD_BINARY_PACKAGE=TRUE
-make VERBOSE=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1517769455
+export SOURCE_DATE_EPOCH=1529094656
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/catkin
+cp LICENSE %{buildroot}/usr/share/doc/catkin/LICENSE
 pushd clr-build
 %make_install
 popd
@@ -199,6 +210,10 @@ popd
 %files dev
 %defattr(-,root,root,-)
 /usr/lib64/pkgconfig/catkin.pc
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/catkin/LICENSE
 
 %files python
 %defattr(-,root,root,-)
