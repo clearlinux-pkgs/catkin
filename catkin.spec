@@ -4,7 +4,7 @@
 #
 Name     : catkin
 Version  : 0.7.11
-Release  : 22
+Release  : 23
 URL      : https://github.com/ros/catkin/archive/0.7.11.tar.gz
 Source0  : https://github.com/ros/catkin/archive/0.7.11.tar.gz
 Summary  : No detailed summary available
@@ -89,15 +89,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530578741
+export SOURCE_DATE_EPOCH=1531201994
 mkdir clr-build
 pushd clr-build
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DCATKIN_BUILD_BINARY_PACKAGE=TRUE
+%cmake .. -DCATKIN_BUILD_BINARY_PACKAGE=TRUE
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1530578741
+export SOURCE_DATE_EPOCH=1531201994
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/catkin
 cp LICENSE %{buildroot}/usr/share/doc/catkin/LICENSE
@@ -122,9 +122,6 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/catkin/LICENSE
-/usr/share/catkin/cmake/__pycache__/interrogate_setup_dot_py.cpython-37.pyc
-/usr/share/catkin/cmake/__pycache__/order_paths.cpython-37.pyc
-/usr/share/catkin/cmake/__pycache__/parse_package_xml.cpython-37.pyc
 /usr/share/catkin/cmake/all.cmake
 /usr/share/catkin/cmake/assert.cmake
 /usr/share/catkin/cmake/atomic_configure_file.cmake
@@ -189,9 +186,6 @@ popd
 /usr/share/catkin/cmake/templates/setup.bat.in
 /usr/share/catkin/cmake/templates/setup.sh.in
 /usr/share/catkin/cmake/templates/setup.zsh.in
-/usr/share/catkin/cmake/test/__pycache__/download_checkmd5.cpython-37.pyc
-/usr/share/catkin/cmake/test/__pycache__/remove_test_results.cpython-37.pyc
-/usr/share/catkin/cmake/test/__pycache__/run_tests.cpython-37.pyc
 /usr/share/catkin/cmake/test/catkin_download_test_data.cmake
 /usr/share/catkin/cmake/test/download_checkmd5.py
 /usr/share/catkin/cmake/test/gtest.cmake
