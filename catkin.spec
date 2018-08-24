@@ -4,7 +4,7 @@
 #
 Name     : catkin
 Version  : 0.7.14
-Release  : 24
+Release  : 25
 URL      : https://github.com/ros/catkin/archive/0.7.14.tar.gz
 Source0  : https://github.com/ros/catkin/archive/0.7.14.tar.gz
 Summary  : No detailed summary available
