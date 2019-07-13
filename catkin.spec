@@ -4,7 +4,7 @@
 #
 Name     : catkin
 Version  : 0.7.18
-Release  : 30
+Release  : 31
 URL      : https://github.com/ros/catkin/archive/0.7.18/catkin-0.7.18.tar.gz
 Source0  : https://github.com/ros/catkin/archive/0.7.18/catkin-0.7.18.tar.gz
 Summary  : No detailed summary available
