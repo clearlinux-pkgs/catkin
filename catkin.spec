@@ -4,7 +4,7 @@
 #
 Name     : catkin
 Version  : 0.8.0
-Release  : 38
+Release  : 39
 URL      : https://github.com/ros/catkin/archive/0.8.0/catkin-0.8.0.tar.gz
 Source0  : https://github.com/ros/catkin/archive/0.8.0/catkin-0.8.0.tar.gz
 Summary  : No detailed summary available
@@ -93,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1579908046
+export SOURCE_DATE_EPOCH=1582903967
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -110,7 +110,7 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1579908046
+export SOURCE_DATE_EPOCH=1582903967
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/catkin
 cp %{_builddir}/catkin-0.8.0/LICENSE %{buildroot}/usr/share/package-licenses/catkin/8a5f2893445b1f334b6c2554e38bf39f4ab70913
