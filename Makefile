@@ -1,5 +1,5 @@
 PKG_NAME := catkin
-URL = https://github.com/ros/catkin/archive/0.8.6/catkin-0.8.6.tar.gz
+URL = https://github.com/ros/catkin/archive/0.8.7/catkin-0.8.7.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
