@@ -4,7 +4,7 @@
 #
 Name     : catkin
 Version  : 0.8.8
-Release  : 45
+Release  : 46
 URL      : https://github.com/ros/catkin/archive/0.8.8/catkin-0.8.8.tar.gz
 Source0  : https://github.com/ros/catkin/archive/0.8.8/catkin-0.8.8.tar.gz
 Summary  : No detailed summary available
